@@ -7,7 +7,10 @@ import BottomNav from "../components/BottomNav";
 import "../styles/MyTackle.css";
 
 import type { FishingItem } from "../types/FishingItem";
-import { getItemsFromDatabase } from "../services/SQLiteInventory";
+import {
+    getItemsFromDatabase,
+    updateFavorite
+} from "../services/SQLiteInventory";
 
 export default function SoftPlastics() {
 
@@ -28,6 +31,17 @@ export default function SoftPlastics() {
         );
 
         setSoftPlastics(filtered);
+
+    }
+
+    async function toggleFavorite(item: FishingItem) {
+
+        await updateFavorite(
+            item.id,
+            !item.favorite
+        );
+
+        await loadItems();
 
     }
 
@@ -74,25 +88,29 @@ export default function SoftPlastics() {
 
                             )}
 
-                            <h2>
-
-                                {item.type}
-
-                            </h2>
+                            <h2>{item.type}</h2>
 
                             <p>
-
                                 {item.length} • {item.color}
-
                             </p>
 
                             <p>
-
                                 Quantity: {item.quantity}
-
                             </p>
 
                         </div>
+
+                        <button
+                            type="button"
+                            className={
+                                item.favorite
+                                    ? "favoriteButton favoriteOn"
+                                    : "favoriteButton favoriteOff"
+                            }
+                            onClick={() => toggleFavorite(item)}
+                        >
+                            {item.favorite ? "★" : "☆"}
+                        </button>
 
                     </div>
 
@@ -108,9 +126,7 @@ export default function SoftPlastics() {
                         <div>
 
                             <h2>
-
                                 ➕ Add Soft Plastic
-
                             </h2>
 
                         </div>

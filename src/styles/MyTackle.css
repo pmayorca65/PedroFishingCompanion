@@ -231,3 +231,38 @@
     max-height:280px;
 
 }
+/* ===========================
+   FAVORITE STAR
+=========================== */
+
+.favoriteButton {
+
+    font-size: 34px;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    transition: .2s;
+
+    margin-left: 18px;
+
+}
+
+.favoriteButton:hover {
+
+    transform: scale(1.2);
+
+}
+
+.favoriteOn {
+
+    color: gold;
+
+}
+
+.favoriteOff {
+
+    color: #BBBBBB;
+
+}

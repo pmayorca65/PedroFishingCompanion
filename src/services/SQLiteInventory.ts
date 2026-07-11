@@ -35,3 +35,22 @@ export async function getItemsFromDatabase() {
     return result.values ?? [];
 
 }
+
+export async function updateFavorite(
+    id: string,
+    favorite: boolean
+) {
+
+    const db = getDatabase();
+
+    await db.run(
+        `UPDATE tackle
+         SET favorite = ?
+         WHERE id = ?`,
+        [
+            favorite ? 1 : 0,
+            id
+        ]
+    );
+
+}

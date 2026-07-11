@@ -1,0 +1,233 @@
+/* ===========================
+   MY TACKLE / ADD ITEM STYLE
+=========================== */
+
+.tacklePage,
+.formPage {
+
+    background: #16364A;
+
+    min-height: calc(100vh - 75px);
+
+    padding: 25px;
+
+    padding-bottom: 110px;
+
+}
+
+/* ===========================
+   CATEGORY CARDS
+=========================== */
+
+.categoryCard {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 22px;
+
+    margin-bottom: 18px;
+
+    box-shadow: 0 8px 18px rgba(0,0,0,.18);
+
+    transition: .25s;
+
+    cursor: pointer;
+
+}
+
+.categoryCard:hover{
+
+    transform: translateY(-3px);
+
+}
+
+.categoryCard div{
+
+    flex:1;
+
+}
+
+.categoryCard h2{
+
+    margin:0;
+
+    color:#12344B;
+
+    font-size:28px;
+
+    font-weight:700;
+
+}
+
+.categoryCard p{
+
+    margin-top:6px;
+
+    color:#666;
+
+    font-size:16px;
+
+}
+
+.categoryCard span{
+
+    font-size:34px;
+
+    color:#0B4F6C;
+
+    font-weight:bold;
+
+}
+
+.cardLink{
+
+    display:block;
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+/* ===========================
+   FORM
+=========================== */
+
+.formSection{
+
+    margin-bottom:28px;
+
+}
+
+.formSection label{
+
+    display:block;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    margin-bottom:10px;
+
+}
+
+.formSection select,
+.formSection input,
+.formSection textarea{
+
+    width:100%;
+
+    box-sizing:border-box;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:14px;
+
+    font-size:18px;
+
+    background:white;
+
+    color:#12344B;
+
+}
+
+.formSection textarea{
+
+    resize:none;
+
+}
+
+/* ===========================
+   PHOTO BUTTONS
+=========================== */
+
+.photoButton{
+
+    width:100%;
+
+    padding:18px;
+
+    margin-bottom:12px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#ffffff;
+
+    color:#12344B;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.photoButton:hover{
+
+    background:#EAF6FF;
+
+}
+
+/* ===========================
+   SAVE BUTTON
+=========================== */
+
+.saveButton{
+
+    width:100%;
+
+    padding:22px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:#1FA34A;
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.saveButton:hover{
+
+    background:#28B653;
+
+}
+.previewImage{
+
+    width:100%;
+
+    border-radius:16px;
+
+    margin-bottom:15px;
+
+    object-fit:cover;
+
+    max-height:280px;
+
+}

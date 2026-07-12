@@ -7,7 +7,10 @@ import LakeGuide from "./pages/LakeGuide";
 import CatchLog from "./pages/CatchLog";
 import ShoppingList from "./pages/ShoppingList";
 import Settings from "./pages/Settings";
+
 import SoftPlastics from "./pages/SoftPlastics";
+import JigHeads from "./pages/JigHeads";
+
 import AddItem from "./pages/AddItem";
 import EditItem from "./pages/EditItem";
 
@@ -20,14 +23,25 @@ function App() {
       <Routes>
 
         <Route path="/" element={<Home />} />
+
         <Route path="/tackle" element={<MyTackle />} />
+
         <Route path="/fish" element={<FishGuide />} />
+
         <Route path="/lakes" element={<LakeGuide />} />
+
         <Route path="/log" element={<CatchLog />} />
+
         <Route path="/shopping" element={<ShoppingList />} />
+
         <Route path="/settings" element={<Settings />} />
+
         <Route path="/softplastics" element={<SoftPlastics />} />
-        <Route path="/additem" element={<AddItem />} />
+
+        <Route path="/jigheads" element={<JigHeads />} />
+
+        <Route path="/additem/:category" element={<AddItem />} />
+
         <Route path="/edititem/:id" element={<EditItem />} />
 
       </Routes>

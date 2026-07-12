@@ -4,9 +4,23 @@ export interface FishingItem {
 
     category: string;
 
+    // Universal fields
+
     type: string;
 
+    style: string;
+
+    brand: string;
+
+    model: string;
+
+    size: string;
+
+    weight: string;
+
     length: string;
+
+    depth: string;
 
     color: string;
 

@@ -39,33 +39,67 @@ export default function EditItem() {
 
     async function saveChanges() {
 
-        if (!item) return;
+    if (!item) return;
 
-        await updateItem(item);
+    await updateItem(item);
 
-        alert("Item Updated!");
+    alert("Item Updated!");
 
-        navigate("/softplastics");
+    switch (item.category) {
+
+        case "Soft Plastic":
+
+            navigate("/softplastics");
+            break;
+
+        case "Jig Head":
+
+            navigate("/jigheads");
+            break;
+
+        default:
+
+            navigate("/tackle");
 
     }
+
+    }   
 
     async function deleteCurrentItem() {
 
-        if (!item) return;
+    if (!item) return;
 
-        const confirmed = window.confirm(
-            "Delete this item?"
-        );
+    const confirmed = window.confirm(
+        "Delete this item?"
+    );
 
-        if (!confirmed) return;
+    if (!confirmed) return;
 
-        await deleteItem(item.id);
+    const category = item.category;
 
-        alert("Item Deleted!");
+    await deleteItem(item.id);
 
-        navigate("/softplastics");
+    alert("Item Deleted!");
+
+    switch (category) {
+
+        case "Soft Plastic":
+
+            navigate("/softplastics");
+            break;
+
+        case "Jig Head":
+
+            navigate("/jigheads");
+            break;
+
+        default:
+
+            navigate("/tackle");
 
     }
+
+    }   
 
     if (!item) {
 

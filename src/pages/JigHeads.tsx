@@ -7,16 +7,17 @@ import BottomNav from "../components/BottomNav";
 import "../styles/MyTackle.css";
 
 import type { FishingItem } from "../types/FishingItem";
+
 import {
     getItemsFromDatabase,
     updateFavorite
 } from "../services/SQLiteInventory";
 
-export default function SoftPlastics() {
+export default function JigHeads() {
 
     const navigate = useNavigate();
 
-    const [softPlastics, setSoftPlastics] = useState<FishingItem[]>([]);
+    const [jigHeads, setJigHeads] = useState<FishingItem[]>([]);
 
     const [searchText, setSearchText] = useState("");
 
@@ -33,23 +34,31 @@ export default function SoftPlastics() {
         const items = await getItemsFromDatabase();
 
         const filtered = items.filter(
-            (item: FishingItem) => item.category === "Soft Plastic"
+
+            (item: FishingItem) => item.category === "Jig Head"
+
         );
 
-        setSoftPlastics(filtered);
+        setJigHeads(filtered);
 
     }
 
     async function toggleFavorite(
+
         e: React.MouseEvent,
+
         item: FishingItem
+
     ) {
 
         e.stopPropagation();
 
         await updateFavorite(
+
             item.id,
+
             !item.favorite
+
         );
 
         await loadItems();
@@ -62,15 +71,16 @@ export default function SoftPlastics() {
 
     }
 
-    const filteredItems = softPlastics.filter(item => {
+    const filteredItems = jigHeads.filter(item => {
 
         const search = searchText.toLowerCase();
 
         const matchesSearch =
 
-            item.type.toLowerCase().includes(search) ||
+            item.weight.toLowerCase().includes(search) ||
+            item.size.toLowerCase().includes(search) ||
+            item.style.toLowerCase().includes(search) ||
             item.color.toLowerCase().includes(search) ||
-            item.length.toLowerCase().includes(search) ||
             item.notes.toLowerCase().includes(search);
 
         const matchesFavorite =
@@ -85,7 +95,7 @@ export default function SoftPlastics() {
 
         <div>
 
-            <Header title="🪱 Soft Plastics" />
+            <Header title="⚖️ Jig Heads" />
 
             <div className="tacklePage">
 
@@ -94,12 +104,19 @@ export default function SoftPlastics() {
                     <label>
 
                         <input
+
                             type="checkbox"
+
                             checked={favoritesOnly}
+
                             onChange={(e) =>
+
                                 setFavoritesOnly(e.target.checked)
+
                             }
+
                             style={{ marginRight: "10px" }}
+
                         />
 
                         ⭐ Show Favorites Only
@@ -111,12 +128,19 @@ export default function SoftPlastics() {
                 <div className="formSection">
 
                     <input
+
                         type="text"
+
                         placeholder="🔍 Search..."
+
                         value={searchText}
+
                         onChange={(e) =>
+
                             setSearchText(e.target.value)
+
                         }
+
                     />
 
                 </div>
@@ -127,9 +151,9 @@ export default function SoftPlastics() {
 
                         <div>
 
-                            <h2>No Matching Lures</h2>
+                            <h2>No Jig Heads</h2>
 
-                            <p>Try another search or filter.</p>
+                            <p>Add your first jig head.</p>
 
                         </div>
 
@@ -140,9 +164,13 @@ export default function SoftPlastics() {
                 {filteredItems.map(item => (
 
                     <div
+
                         key={item.id}
+
                         className="categoryCard"
+
                         onClick={() => editItem(item)}
+
                     >
 
                         <div>
@@ -150,35 +178,67 @@ export default function SoftPlastics() {
                             {item.image && (
 
                                 <img
+
                                     src={item.image}
-                                    alt={item.type}
+
+                                    alt="Jig Head"
+
                                     className="previewImage"
+
                                 />
 
                             )}
 
-                            <h2>{item.type}</h2>
+                            <h2>
+
+                                {item.weight} • {item.size}
+
+                            </h2>
 
                             <p>
-                                {item.length} • {item.color}
+
+                                {item.style}
+
                             </p>
 
                             <p>
+
+                                {item.color}
+
+                            </p>
+
+                            <p>
+
                                 Quantity: {item.quantity}
+
                             </p>
 
                         </div>
 
                         <button
+
                             type="button"
+
                             className={
+
                                 item.favorite
+
                                     ? "favoriteButton favoriteOn"
+
                                     : "favoriteButton favoriteOff"
+
                             }
-                            onClick={(e) => toggleFavorite(e, item)}
+
+                            onClick={(e) =>
+
+                                toggleFavorite(e, item)
+
+                            }
+
                         >
+
                             {item.favorite ? "★" : "☆"}
+
                         </button>
 
                     </div>
@@ -186,8 +246,11 @@ export default function SoftPlastics() {
                 ))}
 
                 <Link
-                    to="/additem/softplastic"
+
+                    to="/additem/jighead"
+
                     className="cardLink"
+
                 >
 
                     <div className="categoryCard">
@@ -195,7 +258,9 @@ export default function SoftPlastics() {
                         <div>
 
                             <h2>
-                                ➕ Add Soft Plastic
+
+                                ➕ Add Jig Head
+
                             </h2>
 
                         </div>

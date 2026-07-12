@@ -9,10 +9,16 @@ import ShoppingList from "./pages/ShoppingList";
 import Settings from "./pages/Settings";
 import SoftPlastics from "./pages/SoftPlastics";
 import AddItem from "./pages/AddItem";
+import EditItem from "./pages/EditItem";
+
 function App() {
+
   return (
+
     <BrowserRouter>
+
       <Routes>
+
         <Route path="/" element={<Home />} />
         <Route path="/tackle" element={<MyTackle />} />
         <Route path="/fish" element={<FishGuide />} />
@@ -22,9 +28,14 @@ function App() {
         <Route path="/settings" element={<Settings />} />
         <Route path="/softplastics" element={<SoftPlastics />} />
         <Route path="/additem" element={<AddItem />} />
+        <Route path="/edititem/:id" element={<EditItem />} />
+
       </Routes>
+
     </BrowserRouter>
+
   );
+
 }
 
 export default App;

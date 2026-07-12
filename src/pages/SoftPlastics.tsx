@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Header from "../components/Header";
 import BottomNav from "../components/BottomNav";
@@ -13,6 +13,8 @@ import {
 } from "../services/SQLiteInventory";
 
 export default function SoftPlastics() {
+
+    const navigate = useNavigate();
 
     const [softPlastics, setSoftPlastics] = useState<FishingItem[]>([]);
 
@@ -34,7 +36,12 @@ export default function SoftPlastics() {
 
     }
 
-    async function toggleFavorite(item: FishingItem) {
+    async function toggleFavorite(
+        e: React.MouseEvent,
+        item: FishingItem
+    ) {
+
+        e.stopPropagation();
 
         await updateFavorite(
             item.id,
@@ -42,6 +49,12 @@ export default function SoftPlastics() {
         );
 
         await loadItems();
+
+    }
+
+    function editItem(item: FishingItem) {
+
+        navigate(`/edititem/${item.id}`);
 
     }
 
@@ -74,6 +87,7 @@ export default function SoftPlastics() {
                     <div
                         key={item.id}
                         className="categoryCard"
+                        onClick={() => editItem(item)}
                     >
 
                         <div>
@@ -107,7 +121,7 @@ export default function SoftPlastics() {
                                     ? "favoriteButton favoriteOn"
                                     : "favoriteButton favoriteOff"
                             }
-                            onClick={() => toggleFavorite(item)}
+                            onClick={(e) => toggleFavorite(e, item)}
                         >
                             {item.favorite ? "★" : "☆"}
                         </button>

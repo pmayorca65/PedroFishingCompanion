@@ -41,11 +41,8 @@ export async function getItemById(id: string) {
     const db = getDatabase();
 
     const result = await db.query(
-
         "SELECT * FROM tackle WHERE id = ?",
-
         [id]
-
     );
 
     return result.values?.[0] ?? null;
@@ -57,7 +54,6 @@ export async function updateItem(item: FishingItem) {
     const db = getDatabase();
 
     await db.run(
-
         `UPDATE tackle
          SET
             category = ?,
@@ -69,7 +65,6 @@ export async function updateItem(item: FishingItem) {
             image = ?,
             favorite = ?
          WHERE id = ?`,
-
         [
             item.category,
             item.type,
@@ -81,7 +76,18 @@ export async function updateItem(item: FishingItem) {
             item.favorite ? 1 : 0,
             item.id
         ]
+    );
 
+}
+
+export async function deleteItem(id: string) {
+
+    const db = getDatabase();
+
+    await db.run(
+        `DELETE FROM tackle
+         WHERE id = ?`,
+        [id]
     );
 
 }

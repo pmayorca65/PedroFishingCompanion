@@ -9,7 +9,8 @@ import "../styles/MyTackle.css";
 import type { FishingItem } from "../types/FishingItem";
 import {
     getItemById,
-    updateItem
+    updateItem,
+    deleteItem
 } from "../services/SQLiteInventory";
 
 export default function EditItem() {
@@ -43,6 +44,24 @@ export default function EditItem() {
         await updateItem(item);
 
         alert("Item Updated!");
+
+        navigate("/softplastics");
+
+    }
+
+    async function deleteCurrentItem() {
+
+        if (!item) return;
+
+        const confirmed = window.confirm(
+            "Delete this item?"
+        );
+
+        if (!confirmed) return;
+
+        await deleteItem(item.id);
+
+        alert("Item Deleted!");
 
         navigate("/softplastics");
 
@@ -177,6 +196,17 @@ export default function EditItem() {
                     onClick={saveChanges}
                 >
                     SAVE CHANGES
+                </button>
+
+                <button
+                    className="saveButton"
+                    style={{
+                        background: "#C62828",
+                        marginTop: "15px"
+                    }}
+                    onClick={deleteCurrentItem}
+                >
+                    DELETE ITEM
                 </button>
 
             </div>

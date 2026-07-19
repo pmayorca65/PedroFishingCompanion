@@ -1,0 +1,158 @@
+:root{
+
+  --glass:rgba(12,32,54,.55);
+  --glass2:rgba(8,22,40,.68);
+
+  --border:rgba(90,185,255,.35);
+
+  --green:#9BE236;
+  --cyan:#29D5F6;
+  --blue:#4AA3FF;
+
+  --text:#FFFFFF;
+  --text2:#C7D3DE;
+
+  --shadow:
+    0 12px 30px rgba(0,0,0,.30),
+    0 24px 60px rgba(0,0,0,.45);
+
+  --radius:28px;
+
+}
+
+*{
+
+  box-sizing:border-box;
+
+}
+
+html{
+
+  height:100%;
+
+}
+
+body{
+
+  margin:0;
+
+  min-height:100vh;
+
+  color:var(--text);
+
+  font-family:
+    Inter,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+
+  background:#07131f;
+
+}
+
+#root{
+
+  min-height:100vh;
+
+}
+
+.appBackground{
+
+  min-height:100vh;
+
+  background-image:
+    linear-gradient(
+      rgba(5,15,25,.28),
+      rgba(5,15,25,.78)
+    ),
+    url("/lake-background.jpg");
+
+  background-size:cover;
+
+  background-position:center;
+
+  background-repeat:no-repeat;
+
+  background-attachment:fixed;
+
+}
+
+.glassCard{
+
+  background:var(--glass);
+
+  backdrop-filter:blur(24px);
+
+  -webkit-backdrop-filter:blur(24px);
+
+  border:1.5px solid var(--border);
+
+  border-radius:var(--radius);
+
+  box-shadow:var(--shadow);
+
+}
+
+.sectionTitle{
+
+  color:var(--cyan);
+
+  font-size:24px;
+
+  font-weight:700;
+
+  letter-spacing:.6px;
+
+}
+
+.value{
+
+  font-size:34px;
+
+  font-weight:700;
+
+  color:white;
+
+}
+
+.label{
+
+  color:var(--text2);
+
+  font-size:15px;
+
+}
+
+.bigTitle{
+
+  font-size:68px;
+
+  font-weight:800;
+
+  line-height:1;
+
+  letter-spacing:-2px;
+
+}
+
+.subtitle{
+
+  font-size:22px;
+
+  font-weight:400;
+
+  color:var(--cyan);
+
+}
+
+.green{
+
+  color:var(--green);
+
+}
+
+.cyan{
+
+  color:var(--cyan);
+
+}

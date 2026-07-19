@@ -1,19 +1,17 @@
-import { Link } from "react-router-dom";
-
-type HeaderProps = {
-  title: string;
-};
+interface HeaderProps {
+  title?: string;
+}
 
 export default function Header({ title }: HeaderProps) {
+  if (!title) return null;
+
   return (
-    <div className="header">
-
-      <Link to="/" className="backButton">
-        ←
-      </Link>
-
-      <h1>{title}</h1>
-
+    <div
+      style={{
+        display: "none",
+      }}
+    >
+      {title}
     </div>
   );
 }
